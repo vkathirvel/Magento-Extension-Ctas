@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @package     Optimiseweb_Ctas
+ * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @copyright   Copyright (c) 2012 Optimiseweb Ltd
+ * @license     Optimiseweblicense
+ */
+/*
+  // Data Object
+  Mage::helper('ctas')->loadCta('logo');
+
+  // PHTML Usage
+  echo Mage::helper('ctas')->getHeading('logo');
+  echo Mage::helper('ctas')->getContent('logo');
+  echo Mage::helper('ctas')->getImage('logo');
+  echo Mage::helper('ctas')->getLink('logo');
+  echo Mage::helper('ctas')->getHtmlLink('logo', '<img src="someimage.jpg" />');
+  echo Mage::helper('ctas')->getCta('logo');
+  echo Mage::helper('ctas')->getCtaDiv('logo', 'class anotherclass');
+
+  // XML
+  <block type="ctas/ctas" name="somea">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>heading</value></action>
+  </block>
+  <block type="ctas/ctas" name="someb">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>content</value></action>
+  </block>
+  <block type="ctas/ctas" name="somec">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>image</value></action>
+  </block>
+  <block type="ctas/ctas" name="somed">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>link</value></action>
+  </block>
+  <block type="ctas/ctas" name="somee">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>htmllink</value></action>
+  </block>
+  <block type="ctas/ctas" name="somef">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>cta</value></action>
+  </block>
+  <block type="ctas/ctas" name="someg">
+  <action method="setIdentifier"><value>logo</value></action>
+  <action method="setObjectType"><value>ctadiv</value></action>
+  </block>
+
+  // CMS Short Codes
+  {{block type="ctas/ctas" identifier="logo" object_type="heading"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="content"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="image"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="link"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="htmllink" linkcontent="content"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="cta"}}
+  {{block type="ctas/ctas" identifier="logo" object_type="ctadiv" class="class"}}
+ */
+if ($this->getIdentifier() != NULL) {
+    switch ($this->getObjectType()) {
+        case 'heading':
+            echo $this->getHeading($this->getIdentifier());
+            break;
+        case 'content':
+            echo $this->getContent($this->getIdentifier());
+            break;
+        case 'image':
+            echo $this->getImage($this->getIdentifier());
+            break;
+        case 'link':
+            echo $this->getLink($this->getIdentifier());
+            break;
+        case 'htmllink':
+            echo $this->getHtmlLink($this->getIdentifier(), $this->getLinkContent());
+            break;
+        case 'cta':
+            echo $this->getCta($this->getIdentifier());
+            break;
+        case 'ctadiv':
+            echo $this->getCtaDiv($this->getIdentifier(), $this->getClass());
+            break;
+        case 'imagewithcustomurl':
+            echo $this->getImageWithCustomUrl($this->getIdentifier(), $this->getCustomUrl(), $this->getTitle(), $this->getClass(), $this->getRel());
+            break;
+        default:
+            break;
+    }
+}
