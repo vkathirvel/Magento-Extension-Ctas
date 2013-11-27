@@ -12,6 +12,17 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     /**
+     * Get config
+     *
+     * @param type $field
+     * @return type
+     */
+    public function getConfig($field)
+    {
+        return Mage::getStoreConfig('optimisewebctas/' . $field);
+    }
+
+    /**
      * Load the CTA and check status and date range
      *
      * @param type $identifier
@@ -39,12 +50,12 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
     public function _checkDateRange($startDate, $endDate)
     {
         if ($startDate) {
-
+            
         } else {
             $startDate = '2000-01-01 00:00:00';
         }
         if ($endDate) {
-
+            
         } else {
             /* $endDate = '2999-12-31 00:00:00'; */
             $endDate = date('Y-m-d H:i:s', PHP_INT_MAX);
@@ -148,6 +159,13 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
                 /* Start creating the HTML output */
                 $html = '';
                 $html .= '<img src="' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $cta->getData('image') . '" ';
+                if ($cta->getData('image_retina') AND $this->getConfig('retina/enabled')) {
+                    $dataAttribute = 'data-at2x';
+                    if ($this->getConfig('retina/dataattribute')) {
+                        $dataAttribute = $this->getConfig('retina/dataattribute');
+                    }
+                    $html .= $dataAttribute . '="' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $cta->getData('image_retina') . '" ';
+                }
                 if ($cta->getData('alt')) {
                     $html .= 'alt="' . htmlentities($cta->getData('alt')) . '" ';
                 }

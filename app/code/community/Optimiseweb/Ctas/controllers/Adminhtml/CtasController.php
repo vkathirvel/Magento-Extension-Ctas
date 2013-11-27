@@ -90,7 +90,7 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
             $media_sub_folder = 'optimiseweb/ctas' . DS;
             $final_media_path = $media_path . $media_sub_folder;
 
-            $images = array('image');
+            $images = array('image', 'image_retina');
             $uploader = '';
             $upload = '';
 
@@ -180,7 +180,7 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
                 $model = Mage::getModel('ctas/ctas')->load($id);
                 if ($model->getId() || $id == 0) {
                     $media_path = Mage::getBaseDir('media') . DS;
-                    $images = array('image');
+                    $images = array('image', 'image_retina');
                     foreach ($images as $image) {
                         unlink($media_path . $model->getData($image));
                     }
@@ -214,7 +214,7 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
                     /* Delete Images & Files */
                     if ($ctas->getId()) {
                         $media_path = Mage::getBaseDir('media') . DS;
-                        $images = array('image');
+                        $images = array('image', 'image_retina');
                         foreach ($images as $image) {
                             unlink($media_path . $ctas->getData($image));
                         }
@@ -242,13 +242,13 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
             try {
                 foreach ($ctasIds as $ctasId) {
                     $ctas = Mage::getSingleton('ctas/ctas')
-                            ->load($ctasId)
-                            ->setStatus($this->getRequest()->getParam('status'))
-                            ->setIsMassupdate(true)
-                            ->save();
+                        ->load($ctasId)
+                        ->setStatus($this->getRequest()->getParam('status'))
+                        ->setIsMassupdate(true)
+                        ->save();
                 }
                 $this->_getSession()->addSuccess(
-                        $this->__('Total of %d record(s) were successfully updated', count($ctasIds))
+                    $this->__('Total of %d record(s) were successfully updated', count($ctasIds))
                 );
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());

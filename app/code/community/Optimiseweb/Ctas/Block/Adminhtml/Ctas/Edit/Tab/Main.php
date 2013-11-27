@@ -86,6 +86,13 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Main extends Mage_Adminhtml
                 'name' => 'image',
         ));
 
+        $fieldset->addField('image_retina', 'image', array(
+                'label' => Mage::helper('ctas')->__('Image for Retina Display'),
+                'title' => Mage::helper('ctas')->__('Image for Retina Display'),
+                'required' => false,
+                'name' => 'image_retina',
+        ));
+
         $fieldset->addField('alt', 'text', array(
                 'label' => Mage::helper('ctas')->__('Image Alt Tag'),
                 'title' => Mage::helper('ctas')->__('Image Alt Tag'),

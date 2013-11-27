@@ -22,9 +22,33 @@
                             <ctas translate="title" module="ctas">
                                 <title>Optimise Web - Calls to Action</title>
                                 <sort_order>10</sort_order>
+                                <children>
+                                    <managectas translate="title" module="ctas">
+                                        <title>Optimise Web - Manage Calls to Action</title>
+                                        <sort_order>10</sort_order>
+                                    </managectas>
+                                    <settings translate="title" module="ctas">
+                                        <title>Optimise Web - Calls to Action - Settings</title>
+                                        <sort_order>11</sort_order>
+                                    </settings>
+                                </children>
                             </ctas>
                         </children>
                     </optimiseweball>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <optimisewebconfig translate="title" module="ctas">
+                                        <title>Optimise Web - System Configuration Group</title>
+                                    </optimisewebconfig>
+                                    <optimisewebctas translate="title" module="ctas">
+                                        <title>Optimise Web - Calls to Action - Settings</title>
+                                    </optimisewebctas>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
             </admin>
         </resources>
