@@ -5,7 +5,7 @@
  *
  * @package     Optimiseweb_Ctas
  * @author      Sid Vel (sid@optimiseweb.co.uk)
- * @copyright   Copyright (c) 2013 Optimiseweb Ltd
+ * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract

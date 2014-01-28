@@ -5,7 +5,7 @@
  *
  * @package     Optimiseweb_Ctas
  * @author      Sid Vel (sid@optimiseweb.co.uk)
- * @copyright   Copyright (c) 2013 Optimiseweb Ltd
+ * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
@@ -22,7 +22,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Form extends Mage_Adminhtml_Blo
                 'action' => $this->getUrl('*/*/save', array('id' => $this->getRequest()->getParam('id'))),
                 'method' => 'post',
                 'enctype' => 'multipart/form-data'
-                )
+            )
         );
 
         $form->setUseContainer(true);
