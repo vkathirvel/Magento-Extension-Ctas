@@ -1,5 +1,5 @@
 <_>
-   <form_key>nHvF49oKLkOZyLsQ</form_key>
+   <form_key>Qbd6HnXHLx3ggdCt</form_key>
    <name>Optimiseweb_Ctas</name>
    <channel>community</channel>
    <version_ids>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                         </files>
+            <files>                          </files>
          </files>
       </package>
       <extension>
@@ -61,26 +61,31 @@
          <target>magecommunity</target>
          <target>mageetc</target>
          <target>magedesign</target>
+         <target>magelocale</target>
       </target>
       <path>
          <path/>
          <path>Optimiseweb/Ctas</path>
          <path>modules/Optimiseweb_Ctas.xml</path>
          <path>frontend/base/default/template/optimiseweb/ctas</path>
+         <path>en_US/Optimiseweb_Ctas.csv</path>
       </path>
       <type>
          <type>file</type>
          <type>dir</type>
          <type>file</type>
          <type>dir</type>
+         <type>file</type>
       </type>
       <include>
          <include/>
          <include/>
          <include/>
          <include/>
+         <include/>
       </include>
       <ignore>
+         <ignore/>
          <ignore/>
          <ignore/>
          <ignore/>
