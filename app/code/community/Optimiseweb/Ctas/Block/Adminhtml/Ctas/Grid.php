@@ -32,7 +32,15 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     {
         $collection = Mage::getModel('ctas/ctas')->getCollection();
         $this->setCollection($collection);
-        return parent::_prepareCollection();
+        parent::_prepareCollection();
+        foreach ($collection as $cta) {
+            if ($cta->getStoreIds() && $cta->getStoreIds() != 0) {
+                $cta->setStoreIds(explode(',', $cta->getStoreIds()));
+            } else {
+                $cta->setStoreIds(array('0'));
+            }
+        }
+        return $this;
     }
 
     /**
@@ -89,6 +97,17 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
                         2 => 'Disabled',
                 ),
         ));
+
+        if (!Mage::app()->isSingleStoreMode()) {
+            $this->addColumn('store_ids', array(
+                    'header' => Mage::helper('ctas')->__('Stores'),
+                    'index' => 'store_ids',
+                    'type' => 'store',
+                    'store_all' => true,
+                    'store_view' => true,
+                    'filter_condition_callback' => array($this, '_filterStoreCondition'),
+            ));
+        }
 
         $this->addColumn('start_date', array(
                 'header' => Mage::helper('ctas')->__('Start Date'),
@@ -174,6 +193,21 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+    }
+
+    /**
+     * Filter Store Condition
+     * 
+     * @param type $collection
+     * @param type $column
+     * @return type
+     */
+    protected function _filterStoreCondition($collection, $column)
+    {
+        if (!$value = $column->getFilter()->getValue()) {
+            return;
+        }
+        $this->getCollection()->addStoreFilter($value);
     }
 
 }

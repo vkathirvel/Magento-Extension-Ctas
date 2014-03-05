@@ -1,5 +1,5 @@
 <_>
-   <form_key>3HgyDvHsLxGh7mDY</form_key>
+   <form_key>zSvvnTsNnqwLFhPn</form_key>
    <name>Optimiseweb_Ctas</name>
    <channel>community</channel>
    <version_ids>
@@ -9,9 +9,9 @@
    <description>Optimiseweb_Ctas</description>
    <license>Open Software License (OSL)</license>
    <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
-   <version>0.2.2</version>
+   <version>0.2.4</version>
    <stability>stable</stability>
-   <notes>Cleanup</notes>
+   <notes>Adding Product and Category Linkage</notes>
    <authors>
       <name>
          <name>Kathir Vel</name>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                            </files>
+            <files>                              </files>
          </files>
       </package>
       <extension>
@@ -61,6 +61,7 @@
          <target>magecommunity</target>
          <target>mageetc</target>
          <target>magedesign</target>
+         <target>magedesign</target>
          <target>magelocale</target>
       </target>
       <path>
@@ -68,6 +69,7 @@
          <path>Optimiseweb/Ctas</path>
          <path>modules/Optimiseweb_Ctas.xml</path>
          <path>frontend/base/default/template/optimiseweb/ctas</path>
+         <path>adminhtml/default/default/layout/optimiseweb_ctas.xml</path>
          <path>en_US/Optimiseweb_Ctas.csv</path>
       </path>
       <type>
@@ -76,6 +78,7 @@
          <type>file</type>
          <type>dir</type>
          <type>file</type>
+         <type>file</type>
       </type>
       <include>
          <include/>
@@ -83,8 +86,10 @@
          <include/>
          <include/>
          <include/>
+         <include/>
       </include>
       <ignore>
+         <ignore/>
          <ignore/>
          <ignore/>
          <ignore/>

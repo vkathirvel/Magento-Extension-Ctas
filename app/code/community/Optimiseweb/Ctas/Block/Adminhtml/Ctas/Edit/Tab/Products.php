@@ -27,7 +27,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products extends Mage_Admin
     /**
      * Prepare Collection
      * 
-     * @return \Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products
+     * @return 
      */
     protected function _prepareCollection()
     {
@@ -48,7 +48,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products extends Mage_Admin
      * Add Column Filter To Collection
      * 
      * @param type $column
-     * @return \Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products
+     * @return 
      */
     protected function _addColumnFilterToCollection($column)
     {
@@ -214,7 +214,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products extends Mage_Admin
     /**
      * Prepare Mass Action
      * 
-     * @return \Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tab_Products
+     * @return 
      */
     protected function _prepareMassaction()
     {
