@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Model Mysql4 Ctas
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -12,11 +12,10 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
 {
 
     /**
-     *
+     * Construct
      */
     public function _construct()
     {
-        // Note that the cta_id refers to the key field in your database table.
         $this->_init('ctas/ctas', 'cta_id');
     }
 

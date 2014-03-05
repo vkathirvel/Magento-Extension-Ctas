@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Block Adminhtml Ctas Grid Renderer Image
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -12,7 +12,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid_Renderer_Image extends Mage_Adm
 {
 
     /**
-     *
+     * Render
+     * 
      * @param Varien_Object $row
      * @return type
      */
@@ -22,7 +23,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid_Renderer_Image extends Mage_Adm
     }
 
     /**
-     *
+     * get Value
+     * 
      * @param Varien_Object $row
      * @return string
      */

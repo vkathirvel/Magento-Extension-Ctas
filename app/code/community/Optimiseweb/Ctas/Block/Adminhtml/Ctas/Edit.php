@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Block Adminhtml Ctas Edit
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -12,7 +12,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit extends Mage_Adminhtml_Block_Wi
 {
 
     /**
-     *
+     * Construct
      */
     public function __construct()
     {
@@ -39,7 +39,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Prepare Layout
+     * 
      */
     protected function _prepareLayout()
     {
@@ -50,7 +51,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Get Header Text
+     * 
      * @return type
      */
     public function getHeaderText()

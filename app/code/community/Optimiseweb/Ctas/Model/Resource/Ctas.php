@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Model Resource Ctas
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -12,21 +12,18 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 {
 
     /**
-     *
+     * Construct
      */
     public function _construct()
     {
-        /* Note that the cta_id refers to the key field in your database table. */
         $this->_init('ctas/ctas', 'cta_id');
     }
 
     /**
      * Retrieve load select with filter by identifier, store and activity
-     *
-     * @param string $identifier
-     * @param int|array $store
-     * @param int $isActive
-     * @return Varien_Db_Select
+     * 
+     * @param type $identifier
+     * @return type
      */
     protected function _getLoadByIdentifierSelect($identifier)
     {
@@ -36,9 +33,9 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 
     /**
      * Process data before saving
-     *
+     * 
      * @param Mage_Core_Model_Abstract $object
-     * @return Optimiseweb_Ctas_Model_Resource_Ctas
+     * @return type
      */
     protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
@@ -56,9 +53,9 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 
     /**
      * Check for unique identifier
-     *
+     * 
      * @param Mage_Core_Model_Abstract $object
-     * @return bool
+     * @return boolean
      */
     public function getIsUniqueIdentifier(Mage_Core_Model_Abstract $object)
     {
@@ -88,11 +85,9 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 
     /**
      *  Check whether identifier is numeric
-     *
-     * @date Wed Mar 26 18:12:28 EET 2008
-     *
+     * 
      * @param Mage_Core_Model_Abstract $object
-     * @return bool
+     * @return type
      */
     protected function isNumericIdentifier(Mage_Core_Model_Abstract $object)
     {
@@ -101,9 +96,9 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 
     /**
      *  Check whether identifier is valid
-     *
-     *  @param    Mage_Core_Model_Abstract $object
-     *  @return   bool
+     * 
+     * @param Mage_Core_Model_Abstract $object
+     * @return type
      */
     protected function isValidIdentifier(Mage_Core_Model_Abstract $object)
     {
@@ -112,9 +107,10 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
 
     /**
      * Retrieves CTA from DB by passed identifier.
-     *
-     * @param string $identifier
-     * @return string|false
+     * 
+     * @param Mage_Core_Model_Abstract $object
+     * @param type $identifier
+     * @return \Optimiseweb_Ctas_Model_Resource_Ctas|boolean
      */
     public function loadByIdentifier(Mage_Core_Model_Abstract $object, $identifier)
     {

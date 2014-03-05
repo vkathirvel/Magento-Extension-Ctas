@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Adminhtml Ctas Controller
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -146,6 +146,44 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
 
                 $model->save();
 
+                /**
+                 * Save Product Linkage
+                 */
+                $cta_id = $model->getId();
+                if (isset($data['products'])) {
+                    $products = Mage::helper('adminhtml/js')->decodeGridSerializedInput($data['products']);
+                    $collection = Mage::getResourceModel('ctas/ctas_products_collection');
+                    $collection->addFieldToFilter('cta_id', $cta_id);
+                    foreach ($collection as $obj) {
+                        $obj->delete();
+                    }
+                    foreach ($products as $key => $value) {
+                        $productRel = Mage::getModel('ctas/ctas_products');
+                        $productRel->setCtaId($cta_id);
+                        $productRel->setProductId($key);
+                        $productRel->setPosition($value['position']);
+                        $productRel->save();
+                    }
+                }
+                /**
+                 * Save Category Linkage
+                 */
+                if (isset($data['categories'])) {
+                    $categories = Mage::helper('adminhtml/js')->decodeGridSerializedInput($data['categories']);
+                    $collection = Mage::getResourceModel('ctas/ctas_categories_collection');
+                    $collection->addFieldToFilter('cta_id', $cta_id);
+                    foreach ($collection as $obj) {
+                        $obj->delete();
+                    }
+                    foreach ($categories as $key => $value) {
+                        $categoryRel = Mage::getModel('ctas/ctas_categories');
+                        $categoryRel->setCtaId($cta_id);
+                        $categoryRel->setCategoryId($key);
+                        $categoryRel->setPosition($value['position']);
+                        $categoryRel->save();
+                    }
+                }
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('ctas')->__('Call to Action was successfully saved'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
 
@@ -278,7 +316,7 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
     }
 
     /**
-     *
+     * Send Upload Response
      */
     protected function _sendUploadResponse($fileName, $content, $contentType = 'application/octet-stream')
     {
@@ -294,6 +332,46 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
         $response->setBody($content);
         $response->sendResponse();
         die;
+    }
+
+    /**
+     * Ajax Products Action
+     */
+    public function productsAction()
+    {
+        $this->loadLayout();
+        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.products')->setCtasProducts($this->getRequest()->getPost('ctas_products', null));
+        $this->renderLayout();
+    }
+
+    /**
+     * Ajax Products Grid Action
+     */
+    public function productsgridAction()
+    {
+        $this->loadLayout();
+        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.products')->setCtasProducts($this->getRequest()->getPost('ctas_products', null));
+        $this->renderLayout();
+    }
+
+    /**
+     * Ajax Categories Action
+     */
+    public function categoriesAction()
+    {
+        $this->loadLayout();
+        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.categories')->setCtasCategories($this->getRequest()->getPost('ctas_categories', null));
+        $this->renderLayout();
+    }
+
+    /**
+     * Ajax Categories Grid Action
+     */
+    public function categoriesgridAction()
+    {
+        $this->loadLayout();
+        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.categories')->setCtasCategories($this->getRequest()->getPost('ctas_categories', null));
+        $this->renderLayout();
     }
 
 }

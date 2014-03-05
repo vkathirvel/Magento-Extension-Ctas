@@ -11,7 +11,7 @@
 
     <modules>
         <Optimiseweb_Ctas>
-            <version>0.2.2</version>
+            <version>0.2.4</version>
         </Optimiseweb_Ctas>
     </modules>
 
@@ -28,6 +28,22 @@
     </admin>
 
     <adminhtml>
+        <translate>
+            <modules>
+                <Optimiseweb_Ctas>
+                    <files>
+                        <default>Optimiseweb_Ctas.csv</default>
+                    </files>
+                </Optimiseweb_Ctas>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <ctas>
+                    <file>optimiseweb_ctas.xml</file>
+                </ctas>
+            </updates>
+        </layout>
         <menu>
             <optimiseweball translate="title" module="ctas">
                 <title>Optimise Web</title>
@@ -80,6 +96,12 @@
                     <ctas>
                         <table>ctas</table>
                     </ctas>
+                    <ctas_products>
+                        <table>ow_ctas_products</table>
+                    </ctas_products>
+                    <ctas_categories>
+                        <table>ow_ctas_categories</table>
+                    </ctas_categories>
                 </entities>
             </ctas_resource>
         </models>

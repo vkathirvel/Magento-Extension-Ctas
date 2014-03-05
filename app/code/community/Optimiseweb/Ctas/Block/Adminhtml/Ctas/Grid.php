@@ -4,7 +4,7 @@
  * Optimiseweb Ctas Block Adminhtml Ctas Grid
  *
  * @package     Optimiseweb_Ctas
- * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2014 Optimise Web
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -12,7 +12,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
 {
 
     /**
-     *
+     * Construct
      */
     public function __construct()
     {
@@ -24,7 +24,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Prepare Collecton
+     * 
      * @return type
      */
     protected function _prepareCollection()
@@ -35,7 +36,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Prepare Columns
+     * 
      * @return type
      */
     protected function _prepareColumns()
@@ -129,7 +131,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Prepare Mass Action
+     * 
      * @return \Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid
      */
     protected function _prepareMassaction()
@@ -163,7 +166,8 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Grid extends Mage_Adminhtml_Block_Wi
     }
 
     /**
-     *
+     * Get Row URL
+     * 
      * @param type $row
      * @return type
      */
