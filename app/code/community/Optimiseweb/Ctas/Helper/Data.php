@@ -12,6 +12,11 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     /**
+     *
+     */
+    protected $_cta = FALSE;
+
+    /**
      * Get config
      *
      * @param type $field
@@ -30,14 +35,18 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function loadCta($identifier)
     {
-        $cta = Mage::getModel('ctas/ctas')->loadByIdentifier($identifier);
-
-        if ($cta) {
-            if ($this->_filterStore($cta->getData('store_ids')) AND ($cta->getData('status') == 1) AND $this->_checkDateRange($cta->getData('start_date'), $cta->getData('end_date'))) {
-                return $cta;
+        if (!$this->_cta OR ($this->_cta->getData('identifier') !== $identifier)) {
+            $cta = Mage::getModel('ctas/ctas')->loadByIdentifier($identifier);
+            if ($cta) {
+                if ($this->_filterStore($cta->getData('store_ids')) AND ($cta->getData('status') == 1) AND $this->_checkDateRange($cta->getData('start_date'), $cta->getData('end_date'))) {
+                    $this->_cta = $cta;
+                    return $cta;
+                }
             }
+            $this->_cta = FALSE;
+            return FALSE;
         }
-        return FALSE;
+        return $this->_cta;
     }
 
     /**
@@ -236,16 +245,14 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCta($identifier)
     {
         $image = $this->getImage($identifier);
-        $link = $this->getHtmlLink($identifier);
         if ($image) {
+            $imageWithLink = $this->getHtmlLink($identifier, $image);
             /* Start creating the HTML output */
             $html = '';
-            if ($link) {
-                $html .= $link;
-            }
-            $html .= $image;
-            if ($link) {
-                $html .= '</a>';
+            if ($imageWithLink) {
+                $html .= $imageWithLink;
+            } else {
+                $html .= $image;
             }
             return $html;
         }

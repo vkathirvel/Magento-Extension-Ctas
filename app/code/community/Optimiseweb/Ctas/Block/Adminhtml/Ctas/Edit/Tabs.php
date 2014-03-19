@@ -34,21 +34,21 @@ class Optimiseweb_Ctas_Block_Adminhtml_Ctas_Edit_Tabs extends Mage_Adminhtml_Blo
                 'title' => Mage::helper('ctas')->__('Call to Action Information'),
                 'content' => $this->getLayout()->createBlock('ctas/adminhtml_ctas_edit_tab_main')->toHtml(),
         ));
-        
+
         $this->addTab('products', array(
                 'label' => Mage::helper('ctas')->__('Associated Products'),
                 'title' => Mage::helper('ctas')->__('Associated Products'),
                 'url' => $this->getUrl('*/*/products', array('_current' => true)),
                 'class' => 'ajax'
         ));
-        
+
         $this->addTab('categories', array(
                 'label' => Mage::helper('ctas')->__('Associated Categories'),
                 'title' => Mage::helper('ctas')->__('Associated Categories'),
                 'url' => $this->getUrl('*/*/categories', array('_current' => true)),
-                'class' => 'ajax'
+                'class' => 'ajax',
         ));
-        
+
         return parent::_beforeToHtml();
     }
 

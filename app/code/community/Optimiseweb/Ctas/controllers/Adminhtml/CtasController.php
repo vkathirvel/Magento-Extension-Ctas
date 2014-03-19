@@ -149,17 +149,17 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
                 /**
                  * Save Product Linkage
                  */
-                $cta_id = $model->getId();
+                $ctaId = $model->getId();
                 if (isset($data['products'])) {
                     $products = Mage::helper('adminhtml/js')->decodeGridSerializedInput($data['products']);
                     $collection = Mage::getResourceModel('ctas/ctas_products_collection');
-                    $collection->addFieldToFilter('cta_id', $cta_id);
+                    $collection->addFieldToFilter('cta_id', $ctaId);
                     foreach ($collection as $obj) {
                         $obj->delete();
                     }
                     foreach ($products as $key => $value) {
                         $productRel = Mage::getModel('ctas/ctas_products');
-                        $productRel->setCtaId($cta_id);
+                        $productRel->setCtaId($ctaId);
                         $productRel->setProductId($key);
                         $productRel->setPosition($value['position']);
                         $productRel->save();
@@ -168,19 +168,24 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
                 /**
                  * Save Category Linkage
                  */
-                if (isset($data['categories'])) {
-                    $categories = Mage::helper('adminhtml/js')->decodeGridSerializedInput($data['categories']);
+                if (isset($data['category_ids'])) {
+                    $categories = explode(',', $data['category_ids']);
+                    $categories = array_unique($categories);
+
                     $collection = Mage::getResourceModel('ctas/ctas_categories_collection');
-                    $collection->addFieldToFilter('cta_id', $cta_id);
+                    $collection->addFieldToFilter('cta_id', $ctaId);
                     foreach ($collection as $obj) {
                         $obj->delete();
                     }
-                    foreach ($categories as $key => $value) {
-                        $categoryRel = Mage::getModel('ctas/ctas_categories');
-                        $categoryRel->setCtaId($cta_id);
-                        $categoryRel->setCategoryId($key);
-                        $categoryRel->setPosition($value['position']);
-                        $categoryRel->save();
+
+                    foreach ($categories as $catergoryId) {
+                        if (!empty($catergoryId)) {
+                            $categoryRel = Mage::getModel('ctas/ctas_categories');
+                            $categoryRel->setCtaId($ctaId);
+                            $categoryRel->setCategoryId($catergoryId);
+                            $categoryRel->setPosition(1);
+                            $categoryRel->save();
+                        }
                     }
                 }
 
@@ -355,23 +360,22 @@ class Optimiseweb_Ctas_Adminhtml_CtasController extends Mage_Adminhtml_Controlle
     }
 
     /**
-     * Ajax Categories Action
+     * 
      */
     public function categoriesAction()
     {
         $this->loadLayout();
-        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.categories')->setCtasCategories($this->getRequest()->getPost('ctas_categories', null));
         $this->renderLayout();
     }
 
     /**
-     * Ajax Categories Grid Action
+     * 
      */
-    public function categoriesgridAction()
+    public function categoriesJsonAction()
     {
-        $this->loadLayout();
-        $this->getLayout()->getBlock('adminhtml.ctas.edit.tab.categories')->setCtasCategories($this->getRequest()->getPost('ctas_categories', null));
-        $this->renderLayout();
+        $this->getResponse()->setBody(
+            $this->getLayout()->createBlock('ctas/adminhtml_ctas_edit_tab_categories')->getCategoryChildrenJson($this->getRequest()->getParam('category'))
+        );
     }
 
 }

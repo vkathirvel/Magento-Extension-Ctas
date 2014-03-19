@@ -45,4 +45,18 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas_Collection extends Mage_Core_Model_Mysq
         return $this;
     }
 
+    /**
+     * Add Identifier Filter
+     * 
+     * @param type $identifier
+     * @return 
+     */
+    public function addIdentifierFilter($identifier = NULL)
+    {
+        if (!is_null($identifier)) {
+            $this->addFieldToFilter('main_table.identifier', array('eq' => $identifier));
+        }
+        return $this;
+    }
+
 }

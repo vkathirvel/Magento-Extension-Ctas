@@ -8,6 +8,7 @@
 */
 -->
 <layout>
+    
 
     <!-- CTAs and Products -->
     <ctas_adminhtml_ctas_products>
@@ -28,37 +29,43 @@
             </block>
         </block>
     </ctas_adminhtml_ctas_products>
+    
     <!-- CTAs and Products -->
     <ctas_adminhtml_ctas_productsgrid>
         <block type="core/text_list" name="root" output="toHtml">
             <block type="ctas/adminhtml_ctas_edit_tab_products" name="adminhtml.ctas.edit.tab.products"/>
         </block>
     </ctas_adminhtml_ctas_productsgrid>
-
+    
     <!-- CTAs and Categories -->
     <ctas_adminhtml_ctas_categories>
+        <reference name="head">
+            <action method="addJs">
+                <js>extjs/ext-tree.js</js>
+            </action>
+            <action method="addJs">
+                <js>extjs/ext-tree-checkbox.js</js>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>extjs/ext-tree.js</name>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>extjs/ext-tree-checkbox.js</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>extjs/resources/css/ext-all.css</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>extjs/resources/css/ytheme-magento.css</name>
+            </action>
+        </reference>
         <block type="core/text_list" name="root" output="toHtml">
             <block type="ctas/adminhtml_ctas_edit_tab_categories" name="adminhtml.ctas.edit.tab.categories"/>
-            <block type="adminhtml/widget_grid_serializer" name="categories_grid_serializer">
-                <reference name="categories_grid_serializer">
-                    <action method="initSerializerBlock">
-                        <grid_block_name>adminhtml.ctas.edit.tab.categories</grid_block_name>
-                        <data_callback>getSelectedCategories</data_callback>
-                        <hidden_input_name>categories</hidden_input_name>
-                        <reload_param_name>ctas_categories</reload_param_name>
-                    </action>
-                    <action method="addColumnInputName">
-                        <input_name>position</input_name>
-                    </action>
-                </reference>
-            </block>
         </block>
     </ctas_adminhtml_ctas_categories>
-    <!-- CTAs and Categories -->
-    <ctas_adminhtml_ctas_categoriesgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="ctas/adminhtml_ctas_edit_tab_categories" name="adminhtml.ctas.edit.tab.categories"/>
-        </block>
-    </ctas_adminhtml_ctas_categoriesgrid>
-
+    
 </layout>

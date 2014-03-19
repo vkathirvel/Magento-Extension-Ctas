@@ -12,6 +12,11 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
 {
 
     /**
+     *
+     */
+    protected $_joinCtas = false;
+
+    /**
      * Construct
      */
     public function _construct()
@@ -23,16 +28,15 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
     /**
      * Join Ctas
      * 
-     * @param type $storeFilter
-     * @param type $storeId
      * @return 
      */
-    public function joinCtas($storeFilter = FALSE, $storeId = NULL)
+    public function joinCtas()
     {
-        $this->getSelect()->order('position ASC');
-        $this->getSelect()->join(array('ctas_table' => Mage::getSingleton('core/resource')->getTableName('ctas/ctas')), 'ctas_table.cta_id = main_table.cta_id', array('ctas_table.*'));
-        if ($storeFilter) {
-            $this->_addStoreFilter($storeId);
+        if (!$this->_joinCtas) {
+            $this->getSelect()->join(
+                array('ctas_table' => Mage::getSingleton('core/resource')->getTableName('ctas/ctas')), 'ctas_table.cta_id = main_table.cta_id', array('ctas_table.*')
+            );
+            $this->_joinCtas = true;
         }
         return $this;
     }
@@ -44,8 +48,11 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
      * @param type $withAdmin
      * @return 
      */
-    protected function _addStoreFilter($store = NULL, $withAdmin = TRUE)
+    public function addStoreFilter($store = NULL, $withAdmin = TRUE)
     {
+        if (!$this->_joinCtas) {
+            $this->joinCtas();
+        }
         if (is_null($store)) {
             $store = Mage::app()->getStore()->getStoreId();
         }
@@ -63,39 +70,51 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
     }
 
     /**
+     * Add Cta Filter
+     * 
+     * @param type $ctaIds
+     * @return 
+     */
+    public function addCtaFilter($ctaIds = NULL)
+    {
+        if (!$this->_joinCtas) {
+            $this->joinCtas();
+        }
+        if (!is_null($ctaIds) AND !is_array($ctaIds)) {
+            $ctaIds = array($ctaIds);
+        }
+        if (!is_null($ctaIds)) {
+            $this->addFieldToFilter('main_table.cta_id', array('in' => $ctaIds));
+        }
+        return $this;
+    }
+
+    /**
      * Add Category Filter
      * 
      * @param type $categoryId
      * @return 
      */
-    public function addCategoryFilter($categoryId = NULL)
+    public function addCategoryFilter($categoryIds = NULL)
     {
-        if (!is_null($categoryId)) {
-            $this->addFieldToFilter('category_id', $categoryId);
+        if (!$this->_joinCtas) {
+            $this->joinCtas();
+        }
+        if (!is_null($categoryIds) AND !is_array($categoryIds)) {
+            $categoryIds = array($categoryIds);
+        }
+        if (!is_null($categoryIds)) {
+            $this->addFieldToFilter('main_table.category_id', array('in' => $categoryIds));
         }
         return $this;
     }
 
     /**
-     * Add Cta Filter
-     * 
-     * @param type $ctaId
-     * @return 
-     */
-    public function addCtaFilter($ctaId = NULL)
-    {
-        if (!is_null($ctaId)) {
-            $this->addFieldToFilter('main_table.cta_id', $ctaId);
-        }
-        return $this;
-    }
-
-    /**
-     * Get Identifiers Array
+     * Get Ctas Identifiers Array
      * 
      * @return type
      */
-    public function getIdentifiersArray()
+    public function getCtasIdentifiersArray()
     {
         $identifiers = array();
         $i = 0;
@@ -107,11 +126,11 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
     }
 
     /**
-     * Get Identifiers Position Array
+     * Get Ctas Identifiers and Position Array
      * 
      * @return type
      */
-    public function getIdentifiersPositionArray()
+    public function getCtasIdentifiersAndPositionsArray()
     {
         $identifiers = array();
         $i = 0;

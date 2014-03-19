@@ -24,9 +24,26 @@ class Optimiseweb_Ctas_Model_Ctas extends Mage_Core_Model_Abstract
      * Load By Identifier
      * 
      * @param type $identifier
-     * @return \Optimiseweb_Ctas_Model_Ctas|boolean
+     * @return 
      */
     public function loadByIdentifier($identifier)
+    {
+        $collection = Mage::getResourceModel('ctas/ctas_collection');
+        $collection->addStoreFilter();
+        $collection->addIdentifierFilter($identifier);
+        if ($collection->count() > 0) {
+            return $collection->getFirstItem();
+        }
+        return FALSE;
+    }
+
+    /**
+     * Load By Identifier Deprecated
+     * 
+     * @param type $identifier
+     * @return 
+     */
+    public function loadByIdentifierDeprecated($identifier)
     {
         if ($this->_getResource()->loadByIdentifier($this, $identifier)) {
             return $this;
