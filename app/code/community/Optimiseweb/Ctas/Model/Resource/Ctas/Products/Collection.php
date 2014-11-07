@@ -80,7 +80,7 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Products_Collection extends Mage_Core
         if (!$this->_joinCtas) {
             $this->joinCtas();
         }
-        if (!is_null($ctaIds) AND !is_array($ctaIds)) {
+        if (!is_null($ctaIds) AND ! is_array($ctaIds)) {
             $ctaIds = array($ctaIds);
         }
         if (!is_null($ctaIds)) {
@@ -100,7 +100,7 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Products_Collection extends Mage_Core
         if (!$this->_joinCtas) {
             $this->joinCtas();
         }
-        if (!is_null($productIds) AND !is_array($productIds)) {
+        if (!is_null($productIds) AND ! is_array($productIds)) {
             $productIds = array($productIds);
         }
         if (!is_null($productIds)) {

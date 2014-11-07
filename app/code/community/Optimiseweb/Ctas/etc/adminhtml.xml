@@ -8,6 +8,32 @@
 */
 -->
 <config>
+    
+    <menu>
+        <optimiseweball translate="title" module="ctas">
+            <title>Optimise Web</title>
+            <sort_order>71</sort_order>
+            <children>
+                <ctas translate="title" module="ctas">
+                    <title>Calls to Action</title>
+                    <sort_order>1</sort_order>
+                    <children>
+                        <managectas translate="title" module="ctas">
+                            <title>Manage CTAs</title>
+                            <sort_order>1</sort_order>
+                            <action>ctas/adminhtml_ctas</action>
+                        </managectas>
+                        <settings translate="title" module="ctas">
+                            <title>Settings</title>
+                            <sort_order>2</sort_order>
+                            <action>adminhtml/system_config/edit/section/optimisewebctas</action>
+                        </settings>
+                    </children>
+                </ctas>
+            </children>
+        </optimiseweball>
+    </menu>
+    
     <acl>
         <resources>
             <all>
@@ -53,4 +79,5 @@
             </admin>
         </resources>
     </acl>
+    
 </config>

@@ -18,4 +18,5 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas_Products extends Mage_Core_Model_Mysql4
     {
         $this->_init('ctas/ctas_products', 'rel_id');
     }
+
 }

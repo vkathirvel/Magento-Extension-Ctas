@@ -80,7 +80,7 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
         if (!$this->_joinCtas) {
             $this->joinCtas();
         }
-        if (!is_null($ctaIds) AND !is_array($ctaIds)) {
+        if (!is_null($ctaIds) AND ! is_array($ctaIds)) {
             $ctaIds = array($ctaIds);
         }
         if (!is_null($ctaIds)) {
@@ -100,7 +100,7 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
         if (!$this->_joinCtas) {
             $this->joinCtas();
         }
-        if (!is_null($categoryIds) AND !is_array($categoryIds)) {
+        if (!is_null($categoryIds) AND ! is_array($categoryIds)) {
             $categoryIds = array($categoryIds);
         }
         if (!is_null($categoryIds)) {

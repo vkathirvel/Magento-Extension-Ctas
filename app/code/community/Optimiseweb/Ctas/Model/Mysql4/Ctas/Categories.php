@@ -18,4 +18,5 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas_Categories extends Mage_Core_Model_Mysq
     {
         $this->_init('ctas/ctas_categories', 'rel_id');
     }
+
 }

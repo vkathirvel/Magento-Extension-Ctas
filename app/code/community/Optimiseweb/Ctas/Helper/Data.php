@@ -35,10 +35,10 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function loadCta($identifier)
     {
-        if (!$this->_cta OR ($this->_cta->getData('identifier') !== $identifier)) {
+        if (!$this->_cta OR ( $this->_cta->getData('identifier') !== $identifier)) {
             $cta = Mage::getModel('ctas/ctas')->loadByIdentifier($identifier);
             if ($cta) {
-                if ($this->_filterStore($cta->getData('store_ids')) AND ($cta->getData('status') == 1) AND $this->_checkDateRange($cta->getData('start_date'), $cta->getData('end_date'))) {
+                if ($this->_filterStore($cta->getData('store_ids')) AND ( $cta->getData('status') == 1) AND $this->_checkDateRange($cta->getData('start_date'), $cta->getData('end_date'))) {
                     $this->_cta = $cta;
                     return $cta;
                 }
@@ -74,7 +74,7 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
         $startDate = strtotime($startDate);
         $endDate = strtotime($endDate);
 
-        if (($today >= $startDate) AND ($today <= $endDate)) {
+        if (($today >= $startDate) AND ( $today <= $endDate)) {
             return TRUE;
         }
         return FALSE;

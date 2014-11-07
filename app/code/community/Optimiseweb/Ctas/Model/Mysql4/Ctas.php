@@ -127,7 +127,7 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
             $fetchedStoreIds = explode(',', $query_result['store_ids']);
 
             foreach ($fetchedStoreIds as $fetchedStoreId) {
-                if (($fetchedStoreId == '0') OR ($fetchedStoreId == Mage::app()->getStore()->getId())) {
+                if (($fetchedStoreId == '0') OR ( $fetchedStoreId == Mage::app()->getStore()->getId())) {
                     $ctaId = $query_result['cta_id'];
                 }
             }
