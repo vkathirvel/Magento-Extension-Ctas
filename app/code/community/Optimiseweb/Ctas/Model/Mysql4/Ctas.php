@@ -4,8 +4,8 @@
  * Optimiseweb Ctas Model Mysql4 Ctas
  *
  * @package     Optimiseweb_Ctas
- * @author      Kathir Vel (sid@optimiseweb.co.uk)
- * @copyright   Copyright (c) 2014 Optimise Web
+ * @author      Kathir Vel (vkathirvel@gmail.com)
+ * @copyright   Copyright (c) 2015 Kathir Vel
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
@@ -22,10 +22,8 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
     /**
      * Retrieve load select with filter by identifier, store and activity
      *
-     * @param string $identifier
-     * @param int|array $store
-     * @param int $isActive
-     * @return Varien_Db_Select
+     * @param type $identifier
+     * @return type
      */
     protected function _getLoadByIdentifierSelect($identifier)
     {
@@ -37,7 +35,7 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
      * Process data before saving
      *
      * @param Mage_Core_Model_Abstract $object
-     * @return Optimiseweb_Ctas_Model_Mysql4_Ctas
+     * @return type
      */
     protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
@@ -57,7 +55,7 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
      * Check for unique identifier
      *
      * @param Mage_Core_Model_Abstract $object
-     * @return bool
+     * @return boolean
      */
     public function getIsUniqueIdentifier(Mage_Core_Model_Abstract $object)
     {
@@ -88,10 +86,8 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
     /**
      *  Check whether identifier is numeric
      *
-     * @date Wed Mar 26 18:12:28 EET 2008
-     *
      * @param Mage_Core_Model_Abstract $object
-     * @return bool
+     * @return type
      */
     protected function isNumericIdentifier(Mage_Core_Model_Abstract $object)
     {
@@ -101,8 +97,8 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
     /**
      *  Check whether identifier is valid
      *
-     *  @param    Mage_Core_Model_Abstract $object
-     *  @return   bool
+     * @param Mage_Core_Model_Abstract $object
+     * @return type
      */
     protected function isValidIdentifier(Mage_Core_Model_Abstract $object)
     {

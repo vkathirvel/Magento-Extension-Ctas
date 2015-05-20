@@ -4,8 +4,8 @@
  * Optimiseweb Ctas Model Resource Ctas Categories Collection
  *
  * @package     Optimiseweb_Ctas
- * @author      Kathir Vel (sid@optimiseweb.co.uk)
- * @copyright   Copyright (c) 2014 Optimise Web
+ * @author      Kathir Vel (vkathirvel@gmail.com)
+ * @copyright   Copyright (c) 2015 Kathir Vel
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
@@ -50,9 +50,6 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
      */
     public function addStoreFilter($store = NULL, $withAdmin = TRUE)
     {
-        if (!$this->_joinCtas) {
-            $this->joinCtas();
-        }
         if (is_null($store)) {
             $store = Mage::app()->getStore()->getStoreId();
         }
@@ -65,7 +62,16 @@ class Optimiseweb_Ctas_Model_Resource_Ctas_Categories_Collection extends Mage_Co
         if ($withAdmin) {
             $store[] = Mage_Core_Model_App::ADMIN_STORE_ID;
         }
-        $this->addFieldToFilter('store_ids', array('in' => $store));
+        $store_ids = array();
+        foreach ($store as $store_id) {
+            $store_ids[] = array('eq' => $store_id);
+            $store_ids[] = array('like' => '%,' . $store_id . ',%');
+            $store_ids[] = array('like' => $store_id . ',%');
+            $store_ids[] = array('like' => '%,' . $store_id);
+        }
+        if (count($store_ids) > 0) {
+            $this->addFieldToFilter('ctas_table.store_ids', array($store_ids));
+        }
         return $this;
     }
 
