@@ -295,7 +295,9 @@ class Optimiseweb_Ctas_Helper_Data extends Mage_Core_Helper_Abstract
      * @param type $rel
      * @return string|boolean
      */
-    public function getImageWithCustomUrl($identifier, $customUrl = NULL, $title = NULL, $class = NULL, $rel = NULL)
+    public function getImageWithCustomUrl($identifier, $customUrl = NULL,
+                                          $title = NULL, $class = NULL,
+                                          $rel = NULL)
     {
         $image = $this->getImage($identifier);
         if ($image) {

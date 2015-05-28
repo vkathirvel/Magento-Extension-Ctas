@@ -112,7 +112,8 @@ class Optimiseweb_Ctas_Model_Resource_Ctas extends Mage_Core_Model_Resource_Db_A
      * @param type $identifier
      * @return \Optimiseweb_Ctas_Model_Resource_Ctas|boolean
      */
-    public function loadByIdentifier(Mage_Core_Model_Abstract $object, $identifier)
+    public function loadByIdentifier(Mage_Core_Model_Abstract $object,
+                                     $identifier)
     {
         $select = $this->_getLoadByIdentifierSelect($identifier);
 

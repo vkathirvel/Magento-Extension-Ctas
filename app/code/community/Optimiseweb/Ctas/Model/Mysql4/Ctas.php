@@ -111,7 +111,8 @@ class Optimiseweb_Ctas_Model_Mysql4_Ctas extends Mage_Core_Model_Mysql4_Abstract
      * @param string $identifier
      * @return string|false
      */
-    public function loadByIdentifier(Mage_Core_Model_Abstract $object, $identifier)
+    public function loadByIdentifier(Mage_Core_Model_Abstract $object,
+                                     $identifier)
     {
         $select = $this->_getLoadByIdentifierSelect($identifier);
 

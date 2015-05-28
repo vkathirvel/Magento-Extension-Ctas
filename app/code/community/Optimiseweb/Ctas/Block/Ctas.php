@@ -136,7 +136,9 @@ class Optimiseweb_Ctas_Block_Ctas extends Mage_Core_Block_Template
      * @param type $rel
      * @return type
      */
-    public function getImageWithCustomUrl($identifier, $customUrl = NULL, $title = NULL, $class = NULL, $rel = NULL)
+    public function getImageWithCustomUrl($identifier, $customUrl = NULL,
+                                          $title = NULL, $class = NULL,
+                                          $rel = NULL)
     {
         return Mage::helper('ctas')->getImageWithCustomUrl($identifier, $customUrl, $title, $class, $rel);
     }
