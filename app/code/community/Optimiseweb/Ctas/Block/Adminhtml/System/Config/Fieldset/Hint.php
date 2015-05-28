@@ -44,11 +44,6 @@ class Optimiseweb_Ctas_Block_Adminhtml_System_Config_Fieldset_Hint extends Mage_
         return array();
     }
 
-    private function getAdminEmail()
-    {
-        return Mage::getSingleton('admin/session')->getUser()->getEmail();
-    }
-
     public function getOptimiseWebUrl()
     {
         $url = 'https://optimiseweb.co.uk?';
@@ -94,8 +89,7 @@ class Optimiseweb_Ctas_Block_Adminhtml_System_Config_Fieldset_Hint extends Mage_
         $mage = 'Magento_' . $aux . '_' . $mageVersion;
         $hash = md5($ext . '_' . $mage . '_' . $ext);
         $url = Mage::getBaseUrl();
-        $email = $this->getAdminEmail();
-        return 'extension=' . $ext . '&magento=' . $mage . '&url=' . $url . '&email=' . $email . '&ctrl=' . $hash;
+        return 'extension=' . $ext . '&magento=' . $mage . '&url=' . $url . '&ctrl=' . $hash;
     }
 
 }
